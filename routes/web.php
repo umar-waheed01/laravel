@@ -79,7 +79,7 @@ Route::get('/', function () {
 
     Route::view('upload', 'image-uploads');
     Route::post('upload', [ImageController::class, 'upload']); 
-    Route::get('displayImage', [ImageController::class, 'displayImage']);
+    Route::get('displayImage', [ImageController::class, 'displayImage']); 
     
 
     Route::view('layout','layout');
