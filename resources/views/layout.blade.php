@@ -54,12 +54,11 @@
     <p>Here you can add your content, images, and other elements as needed.</p>
     <p>Feel free to customize the layout and style according to your preferences.</p>
     <p>Thank you for visiting!</p>
-    <p>Let all your things have their places; let each part of your business have its time. - Benjamin Franklin</p>
+    <p>Let all your things have their places, let each part of your business have its time. - Benjamin Franklin</p>
     <p>For more information, you can check out the <a href="https://laravel.com/docs/blade">Laravel Blade documentation</a>.</p>
     <p>To learn more about Laravel, visit the <a href="https://laravel.com/docs">Laravel documentation</a>.</p>
     <p>For more information about Blade templating, check out the <a href="https://laravel.com/docs/blade">Blade documentation</a>.</p>
     <p>To learn more about Laravel, visit the <a href="https://laravel.com/docs">Laravel documentation</a>.</p>
-    
     <div class="footer">
         <P>Footer</P>
     </div>

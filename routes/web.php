@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -84,3 +86,7 @@ Route::get('/', function () {
 
     Route::view('layout','layout');
     Route::view('signup','signup');
+
+    Route::get('list', [SellerController::class, 'list']);
+    Route::get('product', [ProductController::class, 'product']);
+    Route::get('save', [SellerController::class, 'save']);
