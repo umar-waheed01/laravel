@@ -67,5 +67,9 @@ class StudentController extends Controller
             return redirect('studentlist')->with('error', 'No students selected for deletion');
         }
     }
+
+    function showList() {
+        return "show list";
+    }
     
 }
