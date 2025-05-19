@@ -69,7 +69,6 @@ class StudentController extends Controller
     }
 
     function showList() {
-        return "show list";
+        return Student::all();
     }
-    
 }
