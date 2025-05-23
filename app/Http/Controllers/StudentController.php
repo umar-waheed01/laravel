@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -70,23 +71,33 @@ class StudentController extends Controller
     }
 
     function showList() {
-        return Product::all();
+        return Student::all();
     }
     
     function insertStudent(Request $request) {
-         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email',
-            'phone' => 'required|string|max:20',
-        ]);
+    // Manual validation
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|min:2|max:10',
+        'email' => 'required|email|unique:students,email',
+        'phone' => 'required|string|max:20',
+    ]);
 
-        $student = Student::create($validated);
-
+    if ($validator->fails()) {
         return response()->json([
-            'message' => 'Student inserted successfully',
-            'data' => $student
-        ], 201);
+            'errors' => $validator->errors()
+        ], 422);
     }
+
+    // Validation passed
+    $validated = $validator->validated();
+
+    $student = Student::create($validated);
+
+    return response()->json([
+        'message' => 'Student inserted successfully',
+        'data' => $student
+    ], 201);
+}
 
     function updateStudent(Request $request)
 {
