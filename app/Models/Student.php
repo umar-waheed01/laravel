@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     function getNameAttribute($val){
         return ucFirst($val);
@@ -23,4 +23,10 @@ class Student extends Model
     function setNameAttribute($val){
         $this->attributes["name"] = ucFirst($val);
     }
+
+     protected $fillable = [
+        'name',
+        'email',
+        'phone',
+    ];
 }

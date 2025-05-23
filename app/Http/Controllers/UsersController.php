@@ -21,6 +21,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+        echo "add new user page";
     }
 
     /**
@@ -37,6 +38,7 @@ class UsersController extends Controller
     public function show(string $id)
     {
         //
+        echo "Details of users: $id";
     }
 
     /**

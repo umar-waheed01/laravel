@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Product;
 
 class StudentController extends Controller
 {
@@ -69,6 +70,61 @@ class StudentController extends Controller
     }
 
     function showList() {
-        return Student::all();
+        return Product::all();
     }
+    
+    function insertStudent(Request $request) {
+         $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:students,email',
+            'phone' => 'required|string|max:20',
+        ]);
+
+        $student = Student::create($validated);
+
+        return response()->json([
+            'message' => 'Student inserted successfully',
+            'data' => $student
+        ], 201);
+    }
+
+    function updateStudent(Request $request)
+{
+    $student = Student::find($request->id);
+
+    if (!$student) {
+        return response()->json(['result' => 'Student not found'], 404);
+    }
+
+    $student->name = $request->name;
+    $student->email = $request->email;
+    $student->phone = $request->phone;
+
+    if ($student->save()) { 
+        return response()->json(['result' => 'Student updated successfully']);
+    } else {
+        return response()->json(['result' => 'Student not updated'], 500);
+    }
+}
+
+    function deleteStudent($id){
+        $student = Student::destroy($id);
+        if($student){
+            return ['result' => "Student Record Deleted"];
+        }else{
+            return ['result' => "student Record not deleted"];
+        }
+    }
+
+    function searchStudent($name){
+        $student = Student::where('name', 'like', "%$name")->get();
+        if($student){
+            return ["result" =>$student];
+        }else{
+            return ["result"=> "no record found"];
+        }
+    }
+
+
+
 }

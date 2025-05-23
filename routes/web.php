@@ -7,6 +7,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,3 +91,6 @@ Route::get('/', function () {
     Route::get('list', [SellerController::class, 'list']);
     Route::get('product', [ProductController::class, 'product']);
     Route::get('save', [SellerController::class, 'save']);
+
+
+    Route::resource('allusers', UsersController::class);
